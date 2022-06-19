@@ -25,30 +25,8 @@ public class Program {
 			String line = br.readLine();
 			while (line != null) {
 
-				if (line.contains("cl_crosshair_drawoutline "))
-					list.add(line.concat("; "));
-				if (line.contains("cl_crosshairalpha "))
-					list.add(line.concat("; "));
-				if (line.contains("cl_crosshaircolor "))
-					list.add(line.concat("; "));
-				if (line.contains("cl_crosshaircolor_b "))
-					list.add(line.concat("; "));
-				if (line.contains("cl_crosshaircolor_g "))
-					list.add(line.concat("; "));
-				if (line.contains("cl_crosshaircolor_r "))
-					list.add(line.concat("; "));
-				if (line.contains("cl_crosshairdot "))
-					list.add(line.concat("; "));
-				if (line.contains("cl_crosshairgap "))
-					list.add(line.concat("; "));
-				if (line.contains("cl_crosshairsize "))
-					list.add(line.concat("; "));
-				if (line.contains("cl_crosshairstyle "))
-					list.add(line.concat("; "));
-				if (line.contains("cl_crosshairthickness "))
-					list.add(line);
-				if (line.contains("cl_crosshair_sniper_width "))
-					list.add(line.concat("; "));
+				if (line.contains("cl_crosshair"))
+					list.add(line.concat("; \n"));
 				line = br.readLine();
 			}
 		} catch (IOException e) {
@@ -56,6 +34,15 @@ public class Program {
 		}
 
 		list.removeIf(p1 -> p1.contains("bind"));
+		list.removeIf(p1 -> p1.contains("maxdist"));
+		list.removeIf(p1 -> p1.contains("split"));
+		list.removeIf(p1 -> p1.contains("friendly"));
+		list.removeIf(p1 -> p1.contains("inaccuracy"));
+		list.removeIf(p1 -> p1.contains("cl_crosshair_t"));
+		list.removeIf(p1 -> p1.contains("useweaponvalue"));
+		list.removeIf(p1 -> p1.contains("cl_crosshairusealpha"));
+		list.removeIf(p1 -> p1.contains("outlinethickness"));
+		
 		
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(strOutPath))) {
 			for (String l : list) {
