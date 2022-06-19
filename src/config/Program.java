@@ -55,6 +55,8 @@ public class Program {
 			e.printStackTrace();
 		}
 
+		list.removeIf(p1 -> p1.contains("bind"));
+		
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(strOutPath))) {
 			for (String l : list) {
 				bw.write(l);
@@ -63,6 +65,7 @@ public class Program {
 			e.printStackTrace();
 		}
 
+		
 	}
 
 }
